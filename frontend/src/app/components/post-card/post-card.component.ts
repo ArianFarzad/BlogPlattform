@@ -23,16 +23,30 @@ export class PostCardComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  toggleComments(): void {
+    toggleComments(): void {
     this.showComments = !this.showComments;
-    if (this.showComments && this.comments.length === 0) {
+    if (this.showComments) {
       this.blogService.getComments(this.post.id).subscribe((comments) => {
-        this.comments = comments;
+        comments.forEach((comment) => {
+          const exists = this.comments.some((c) => c.id === comment.id);
+          if (!exists) {
+            this.comments.push(comment);
+          }
+        });
       });
     }
   }
 
   toggleTextField(): void {
     this.showTextField = !this.showTextField;
+  }
+  
+    addComment(comment: Comment, post: Post): void {
+    if (comment.postId === post.id) {
+      const exists = this.comments.some((c) => c.id === comment.id);
+      if (!exists) {
+        this.comments.push(comment);
+      }
+    }
   }
 }

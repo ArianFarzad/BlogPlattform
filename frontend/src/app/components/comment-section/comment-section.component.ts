@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { BlogService } from '../../core/services/blog.service';
 import { Post } from '../../models/Post';
 import { Comment } from '../../models/Comment';
+import { PostCardComponent } from '../post-card/post-card.component';
 
 @Component({
   selector: 'app-comment-section',
@@ -14,7 +15,8 @@ export class CommentSectionComponent {
   commentText: string = '';
   @Input({ required: true }) post!: Post;
 
-  constructor(private blogService: BlogService) {}
+  constructor(private blogService: BlogService, 
+              private postCardComponent: PostCardComponent) {}
 
   submitComment(): void {
     const textField = document.getElementById('comment-text-area') as HTMLTextAreaElement;
@@ -36,6 +38,7 @@ export class CommentSectionComponent {
         next: (comment) => {
           console.log('Comment created:', comment);
           this.commentText = '';
+          this.postCardComponent.addComment(comment, this.post);
         },
         error: (err) => {
           console.error('Error creating comment:', err);
