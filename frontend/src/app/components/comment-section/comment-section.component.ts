@@ -9,17 +9,21 @@ import { PostCardComponent } from '../post-card/post-card.component';
   standalone: true,
   imports: [],
   templateUrl: './comment-section.component.html',
-  styleUrl: './comment-section.component.css'
+  styleUrl: './comment-section.component.css',
 })
 export class CommentSectionComponent {
   commentText: string = '';
   @Input({ required: true }) post!: Post;
 
-  constructor(private blogService: BlogService, 
-              private postCardComponent: PostCardComponent) {}
+  constructor(
+    private blogService: BlogService,
+    private postCardComponent: PostCardComponent,
+  ) {}
 
   submitComment(): void {
-    const textField = document.getElementById('comment-text-area') as HTMLTextAreaElement;
+    const textField = document.getElementById(
+      'comment-text-area',
+    ) as HTMLTextAreaElement;
     if (textField) {
       this.commentText = textField.value;
     }
@@ -30,9 +34,8 @@ export class CommentSectionComponent {
         email: 'anonymous@example.com',
         postId: this.post.id,
         body: this.commentText,
-        id: Math.floor(Math.random() * 1000)
+        id: Math.floor(Math.random() * 1000),
       };
-
 
       this.blogService.createComment(newComment).subscribe({
         next: (comment) => {
@@ -42,12 +45,10 @@ export class CommentSectionComponent {
         },
         error: (err) => {
           console.error('Error creating comment:', err);
-        }
+        },
       });
     } else {
       console.error('Comment text cannot be empty');
     }
-
   }
-
 }

@@ -8,40 +8,47 @@ import { HomeComponent } from '../../pages/home/home.component';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './post-section.component.html',
-  styleUrl: './post-section.component.css'
+  styleUrl: './post-section.component.css',
 })
 export class PostSectionComponent {
   title: string = '';
   body: string = '';
   showPostSection: boolean = false;
 
-  constructor(private blogService: BlogService, private homeComponent: HomeComponent) {}
+  constructor(
+    private blogService: BlogService,
+    private homeComponent: HomeComponent,
+  ) {}
 
-    submitPost(): void {
-    const titleInput = document.getElementById('post-input') as HTMLInputElement;
-    const bodyTextArea = document.getElementById('post-text-area') as HTMLTextAreaElement;
-  
+  submitPost(): void {
+    const titleInput = document.getElementById(
+      'post-input',
+    ) as HTMLInputElement;
+    const bodyTextArea = document.getElementById(
+      'post-text-area',
+    ) as HTMLTextAreaElement;
+
     if (titleInput && bodyTextArea) {
       this.title = titleInput.value;
       this.body = bodyTextArea.value;
     }
-  
+
     if (this.title.trim() && this.body.trim()) {
       const newPost = {
         title: this.title,
         body: this.body,
         userId: 1,
-        id: Math.floor(Math.random() * 1000)
+        id: Math.floor(Math.random() * 1000),
       };
-  
+
       this.blogService.createPost(newPost).subscribe({
         next: (post) => {
           console.log('Post created:', post);
-          this.closePostSection(); 
+          this.closePostSection();
         },
         error: (err) => {
           console.error('Error creating post:', err);
-        }
+        },
       });
 
       this.homeComponent.addPost(newPost);
@@ -57,5 +64,4 @@ export class PostSectionComponent {
   closePostSection(): void {
     this.showPostSection = false;
   }
-
 }

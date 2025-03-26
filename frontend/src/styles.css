@@ -11,3 +11,21 @@ body {
   flex-direction: column;
   height: 100vh;
 }
+
+:root {
+  --primary-text-color: #000000;
+  --secondary-text-color: #a3a2a2;
+  --primary-background-color: #ffffff;
+  --secondary-background-color: rgb(26, 24, 24);
+}
+
+.row-space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.column-space-between {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}

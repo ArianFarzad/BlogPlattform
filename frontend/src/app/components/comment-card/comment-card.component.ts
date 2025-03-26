@@ -6,7 +6,7 @@ import { Comment } from '../../models/Comment';
   standalone: true,
   imports: [],
   templateUrl: './comment-card.component.html',
-  styleUrl: './comment-card.component.css'
+  styleUrl: './comment-card.component.css',
 })
 export class CommentCardComponent {
   @Input({ required: true }) comment!: Comment;
