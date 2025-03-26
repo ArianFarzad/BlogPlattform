@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { BlogService } from '../../core/services/blog.service';
 import { HomeComponent } from '../../pages/home/home.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-post-section',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatIconModule],
   templateUrl: './post-section.component.html',
   styleUrl: './post-section.component.css',
 })

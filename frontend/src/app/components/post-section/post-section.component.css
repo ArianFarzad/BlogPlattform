@@ -1,18 +1,35 @@
 .add-post-button {
   position: absolute;
-  bottom: 10px;
-  right: 10px;
+  bottom: 25px;
+  right: 25px;
+  background-color: rgb(122, 157, 122);
+  height: 50px;
+  width: 50px;
+  border-radius: 1em;
+  border: none;
+  color: var(--third-text-color);
+
+  :hover {
+    cursor: pointer;
+      transform: rotate(90deg);
+      transition: transform 0.3s ease;
+  }
 }
 
 .post-section {
   position: absolute;
-  top: 10px;
+  top: 0;
   right: 0;
   display: flex;
   background-color: var(--secondary-background-color);
-  height: 80vh;
+  height: 95vh;
   padding: 1em 2em 2em 2em;
-  border-radius: 0.5em 0 0 0.5em;
+  transform: translateX(100%);
+  animation: slideIn 0.5s forwards;
+}
+
+.post-section.hidden {
+  animation: slideOut 0.5s forwards;
 }
 
 .form-container {
@@ -27,4 +44,103 @@ h1 {
   text-align: center;
   color: var(--secondary-text-color);
   font-size: 1.1em;
+}
+
+input[type='text'],
+textarea {
+  font-size: 14px;
+  border-radius: 6px;
+  line-height: 1.5;
+  padding: 1px 10px;
+  transition:
+    box-shadow 100ms ease-in,
+    border 100ms ease-in,
+    background-color 100ms ease-in;
+  border: 2px solid #dee1e2;
+  color: rgb(14, 14, 16);
+  background: #dee1e2;
+  display: block;
+}
+
+input[type='text']:hover,
+textarea:hover {
+  border-color: #ccc;
+}
+
+input[type='text']:focus,
+textarea:focus {
+  border-color: #837e8b;
+  background: #fff;
+}
+
+textarea {
+  height: 100px;
+}
+
+.send-button {
+  width: 30%;
+  background-color: rgb(122, 157, 122);
+  border-radius: 0.2em;
+  border: none;
+  padding: 0.5em;
+  position: absolute;
+  right: 10%;
+  bottom: 50%;
+  justify-content: center;
+  display: flex;
+
+  * {
+    color: var(--third-text-color);
+  }
+
+  :hover {
+    cursor: pointer;
+
+    :nth-child(2) {
+      transform: rotate(-90deg);
+      transition: transform 0.3s ease;
+    }
+  }
+}
+
+.button-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+
+  :first-child {
+    font-size: 1.2em;
+  }
+}
+
+.close-button {
+  background-color: rgb(140, 65, 65);
+  display: flex;
+  justify-content: center;
+  border: none;
+  padding: 0.5em 0;
+  border-radius: 0.2em;
+
+  * {
+    color: var(--third-text-color);
+  }
+
+  :hover {
+    cursor: pointer;
+
+    :nth-child(1) {
+      transform: rotate(90deg);
+      transition: transform 0.3s ease;
+    }
+  }
+}
+
+.close-button-content {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+
+  :nth-child(2) {
+    font-size: 1.2em;
+  }
 }

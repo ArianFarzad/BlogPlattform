@@ -1,7 +1,10 @@
 body {
   margin: 0;
+  padding: 0;
   font-family: Arial, Helvetica, sans-serif;
   background-color: #f4f4f4;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .center {
@@ -15,6 +18,7 @@ body {
 :root {
   --primary-text-color: #000000;
   --secondary-text-color: #a3a2a2;
+  --third-text-color: #ffffff;
   --primary-background-color: #ffffff;
   --secondary-background-color: rgb(26, 24, 24);
 }
@@ -29,3 +33,34 @@ body {
   justify-content: space-between;
   flex-direction: column;
 }
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+}
+
+.third-text-color {
+  color: var(--third-text-color);
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%); 
+  }
+  to {
+    transform: translateX(0); 
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0); 
+  }
+  to {
+    transform: translateX(100%); 
+  }
+}
+

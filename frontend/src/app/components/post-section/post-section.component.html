@@ -1,10 +1,38 @@
-<div *ngIf="showPostSection" class="post-section column-space-between">
+<div
+  [ngClass]="{ 'hidden': !showPostSection }"
+  class="post-section column-space-between"
+>
   <div class="form-container">
     <h1>Share your thoughts</h1>
-    <input type="text" id="post-input" placeholder="your topic" />
-    <textarea name="post" id="post-text-area" cols="30" rows="10"></textarea>
-    <button (click)="submitPost()">Add Post</button>
+    <div class="column third-text-color">
+      <label for="post-input">Title</label>
+      <input type="text" id="post-input" placeholder="your topic..." />
+    </div>
+    <div class="column third-text-color">
+      <label for="post-text-area">Content</label>
+      <textarea
+        name="post"
+        id="post-text-area"
+        placeholder="your content..."
+        cols="30"
+        rows="10"
+      ></textarea>
+    </div>
+    <button mat-icon-button (click)="submitPost()" class="send-button">
+      <span class="button-content">
+        <span> Send </span>
+        <mat-icon>send</mat-icon>
+      </span>
+    </button>
   </div>
-  <button (click)="closePostSection()">close</button>
+  <button mat-icon-button (click)="closePostSection()" class="close-button">
+    <span class="close-button-content">
+      <mat-icon>close</mat-icon><span>Close</span>
+    </span>
+  </button>
 </div>
-<button class="add-post-button" (click)="togglePostSection()">add post</button>
+<div *ngIf="!showPostSection">
+  <button class="add-post-button" (click)="togglePostSection()">
+    <mat-icon>mode-edit</mat-icon>
+  </button>
+</div>
