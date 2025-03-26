@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { BlogService } from '../../core/services/blog.service';
 import { Post } from '../../models/Post';
 import { CommonModule } from '@angular/common';
+import { PostCardComponent } from '../../components/post-card/post-card.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, PostCardComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
