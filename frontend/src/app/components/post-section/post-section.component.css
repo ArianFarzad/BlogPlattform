@@ -1,0 +1,16 @@
+.add-post-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.post-section {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(26, 24, 24);
+  height: 80vh;
+  padding: 1em 4em 2em 4em;
+}

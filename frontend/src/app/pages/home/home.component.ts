@@ -3,11 +3,12 @@ import { BlogService } from '../../core/services/blog.service';
 import { Post } from '../../models/Post';
 import { CommonModule } from '@angular/common';
 import { PostCardComponent } from '../../components/post-card/post-card.component';
+import { PostSectionComponent } from "../../components/post-section/post-section.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, PostCardComponent],
+  imports: [CommonModule, PostCardComponent, PostSectionComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -28,5 +29,12 @@ export class HomeComponent {
         this.isLoading = false;
       }
     });
+  }
+
+  addPost(post: Post): void {
+    const exists = this.posts.some((p) => p.id === post.id);
+    if (!exists) {
+      this.posts.unshift(post);
+    }
   }
 }

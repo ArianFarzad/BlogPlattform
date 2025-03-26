@@ -1,0 +1,10 @@
+<div *ngIf="showPostSection" class="post-section">
+  <h1>Share your thoughts</h1>
+  <button (click)="closePostSection()">x</button>
+  <input type="text" id="post-input" placeholder="your topic" />
+  <textarea name="post" id="post-text-area" cols="30" rows="10"></textarea>
+  <button (click)="submitPost()">Add Post</button>
+</div>
+<button class="add-post-button" (click)="togglePostSection()">
+  add post
+</button>
