@@ -19,4 +19,12 @@ export class BlogService {
   getComments(postId: number): Observable<Comment[]> {
     return this.http.get<Comment[]>(`${this.apiUrl}/posts/${postId}/comments`);
   }
+
+  createPost(post: Omit<Post, 'id'>): Observable<Post> {
+    return this.http.post<Post>(`${this.apiUrl}/posts`, post);
+  }
+
+  createComment(comment: Omit<Comment, 'id'>): Observable<Comment> {
+    return this.http.post<Comment>(`${this.apiUrl}/comments`, comment);
+  }
 }

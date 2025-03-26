@@ -17,3 +17,7 @@
   color: #007bff;
   text-decoration: none;
 }
+
+button {
+  margin-bottom: 1rem;
+}

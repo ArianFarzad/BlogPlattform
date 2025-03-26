@@ -1,9 +1,17 @@
 <div class="post-card">
   <h2>{{ post.title }}</h2>
   <p>{{ post.body }}</p>
+  <div>
   <button (click)="toggleComments()">
     {{ showComments ? 'Hide Comments' : 'Show Comments' }}
   </button>
+  <button (click)="toggleTextField()">
+    {{ showTextField ? 'Hide Text Field' : 'Add Comment' }}
+  </button>
+</div>
+  <div *ngIf="showTextField">
+    <app-comment-section [post]="post"></app-comment-section>
+  </div>
   <div *ngIf="showComments">
     <app-comment-card *ngFor="let comment of comments" [comment]="comment"></app-comment-card>
   </div>
