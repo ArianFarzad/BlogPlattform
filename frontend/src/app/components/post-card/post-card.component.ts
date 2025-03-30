@@ -5,11 +5,17 @@ import { BlogService } from '../../core/services/blog.service';
 import { Comment } from '../../models/Comment';
 import { CommentCardComponent } from '../comment-card/comment-card.component';
 import { CommentSectionComponent } from '../comment-section/comment-section.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-post-card',
   standalone: true,
-  imports: [CommonModule, CommentCardComponent, CommentSectionComponent],
+  imports: [
+    CommonModule,
+    CommentCardComponent,
+    CommentSectionComponent,
+    MatIconModule,
+  ],
   templateUrl: './post-card.component.html',
   styleUrl: './post-card.component.css',
 })

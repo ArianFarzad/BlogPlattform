@@ -21,3 +21,40 @@
 button {
   margin-bottom: 1rem;
 }
+
+.button-container {
+  display: flex;
+  gap: 0.2em;
+  flex-direction: row;
+
+  button {
+    padding: 0.5em 0.8em;
+    border: none;
+    background-color: #f4f0f0;
+    display: flex;
+    align-items: center;
+    gap: 0.2em;
+
+    span {
+      font-size: 1.2em;
+      color: #333;
+    }
+  }
+
+  button:hover {
+    cursor: pointer;
+    background-color: #e0e0e0;
+
+    #button-icon {
+      transform: scale(1.2);
+      transition: transform 0.3s ease;
+    }
+  }
+
+  :nth-child(1) {
+    border-radius: 0.5em 0 0 0.5em;
+  };
+  :nth-child(2) {
+    border-radius: 0 0.5em 0.5em 0;
+  };
+}

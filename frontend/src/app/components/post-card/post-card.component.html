@@ -1,12 +1,14 @@
 <div class="post-card">
   <h2>{{ post.title }}</h2>
   <p>{{ post.body }}</p>
-  <div>
+  <div class="button-container">
     <button (click)="toggleComments()">
-      {{ showComments ? 'Hide Comments' : 'Show Comments' }}
+      <mat-icon id="button-icon">comment</mat-icon>
+      <span>comments</span>
     </button>
     <button (click)="toggleTextField()">
-      {{ showTextField ? 'Hide Text Field' : 'Add Comment' }}
+      <mat-icon id="button-icon">add</mat-icon>
+      <span>add</span>
     </button>
   </div>
   <div *ngIf="showTextField">
