@@ -6,22 +6,25 @@
       <mat-icon id="button-icon">comment</mat-icon>
       <span>comments</span>
     </button>
-    <button (click)="toggleTextField()">
-      <mat-icon id="button-icon">add</mat-icon>
-      <span>add</span>
+    <button (click)="toggleTextField()" [ngClass]="{ cancel: showTextField }">
+      <mat-icon id="button-icon">{{
+        showTextField ? 'cancel' : 'add'
+      }}</mat-icon>
+      <span>{{ showTextField ? 'cancel' : 'add' }}</span>
+    </button>
+    <button (click)="submitComment()" [ngClass]="{ hidden: !showTextField }">
+      <span> submit </span>
+      <mat-icon id="button-icon">check</mat-icon>
     </button>
   </div>
-  <div *ngIf="showTextField">
-    <div class="input-container">
-      <textarea name="comment" id="comment-text-area" cols="30" rows="10">
-      </textarea>
-      <button (click)="submitComment()">Add Comment</button>
-    </div>
+  <div class="input-container" [ngClass]="{ hidden: !showTextField }">
+    <textarea name="comment" id="comment-text-area" cols="30" rows="10">
+    </textarea>
   </div>
-  <div *ngIf="showComments">
-    <app-comment-card
-      *ngFor="let comment of comments"
-      [comment]="comment"
-    ></app-comment-card>
-  </div>
+</div>
+<div *ngIf="showComments">
+  <app-comment-card
+    *ngFor="let comment of comments"
+    [comment]="comment"
+  ></app-comment-card>
 </div>

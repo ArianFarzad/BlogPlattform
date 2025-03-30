@@ -6,6 +6,7 @@ import { Comment } from '../../models/Comment';
 import { CommentCardComponent } from '../comment-card/comment-card.component';
 import { MatIconModule } from '@angular/material/icon';
 import { ToastrService } from 'ngx-toastr';
+import { text } from 'stream/consumers';
 
 @Component({
   selector: 'app-post-card',
@@ -78,6 +79,8 @@ export class PostCardComponent implements OnInit {
           console.log('Comment created:', comment);
           this.commentText = '';
           this.addComment(comment, this.post);
+          this.toggleTextField();
+          textField.value = '';
           this.toastr.success('Comment added successfully!', 'Success');
         },
         error: (err) => {
@@ -85,7 +88,7 @@ export class PostCardComponent implements OnInit {
         },
       });
     } else {
-      console.error('Comment text cannot be empty');
+      this.toastr.error('Comment cannot be empty', 'Error');
     }
   }
 }
