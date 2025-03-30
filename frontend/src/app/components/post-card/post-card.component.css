@@ -125,3 +125,7 @@ button {
   animation: closeFromBottomToTop 0.5s forwards;
   display: none;
 }
+
+.comments-container {
+  animation: openFromTopToBottom 1s forwards;
+}

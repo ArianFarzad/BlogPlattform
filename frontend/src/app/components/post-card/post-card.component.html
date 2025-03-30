@@ -26,7 +26,7 @@
       rows="10">
     </textarea>
   </div>
-  <div *ngIf="showComments">
+  <div class="comments-container" *ngIf="showComments">
     <app-comment-card
       *ngFor="let comment of comments"
       [comment]="comment"
