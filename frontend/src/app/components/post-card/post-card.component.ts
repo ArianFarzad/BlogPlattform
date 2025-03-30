@@ -59,7 +59,7 @@ export class PostCardComponent implements OnInit {
 
   submitComment(): void {
     const textField = document.getElementById(
-      'comment-text-area',
+      'comment-text-area-' + this.post.id,
     ) as HTMLTextAreaElement;
     if (textField) {
       this.commentText = textField.value;
