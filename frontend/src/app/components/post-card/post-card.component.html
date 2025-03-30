@@ -21,10 +21,11 @@
     <textarea name="comment" id="comment-text-area" cols="30" rows="10">
     </textarea>
   </div>
+  <div *ngIf="showComments">
+    <app-comment-card
+      *ngFor="let comment of comments"
+      [comment]="comment"
+    ></app-comment-card>
+  </div>
 </div>
-<div *ngIf="showComments">
-  <app-comment-card
-    *ngFor="let comment of comments"
-    [comment]="comment"
-  ></app-comment-card>
-</div>
+
