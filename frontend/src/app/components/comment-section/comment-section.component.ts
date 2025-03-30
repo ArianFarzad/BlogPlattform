@@ -3,6 +3,7 @@ import { BlogService } from '../../core/services/blog.service';
 import { Post } from '../../models/Post';
 import { Comment } from '../../models/Comment';
 import { PostCardComponent } from '../post-card/post-card.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-comment-section',
@@ -18,6 +19,7 @@ export class CommentSectionComponent {
   constructor(
     private blogService: BlogService,
     private postCardComponent: PostCardComponent,
+    private toastr: ToastrService,
   ) {}
 
   submitComment(): void {
@@ -42,6 +44,7 @@ export class CommentSectionComponent {
           console.log('Comment created:', comment);
           this.commentText = '';
           this.postCardComponent.addComment(comment, this.post);
+          this.toastr.success('Comment added successfully!', 'Success');
         },
         error: (err) => {
           console.error('Error creating comment:', err);

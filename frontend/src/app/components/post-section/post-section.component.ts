@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { BlogService } from '../../core/services/blog.service';
 import { HomeComponent } from '../../pages/home/home.component';
 import { MatIconModule } from '@angular/material/icon';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-post-section',
@@ -19,6 +20,7 @@ export class PostSectionComponent {
   constructor(
     private blogService: BlogService,
     private homeComponent: HomeComponent,
+    private toastr: ToastrService,
   ) {}
 
   submitPost(): void {
@@ -46,6 +48,7 @@ export class PostSectionComponent {
         next: (post) => {
           console.log('Post created:', post);
           this.closePostSection();
+          this.toastr.success('Post created successfully!', 'Success');
         },
         error: (err) => {
           console.error('Error creating post:', err);
