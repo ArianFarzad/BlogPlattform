@@ -12,7 +12,11 @@
     </button>
   </div>
   <div *ngIf="showTextField">
-    <app-comment-section [post]="post"></app-comment-section>
+    <div class="input-container">
+      <textarea name="comment" id="comment-text-area" cols="30" rows="10">
+      </textarea>
+      <button (click)="submitComment()">Add Comment</button>
+    </div>
   </div>
   <div *ngIf="showComments">
     <app-comment-card

@@ -58,3 +58,23 @@ button {
     border-radius: 0 0.5em 0.5em 0;
   };
 }
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  textarea {
+    resize: none;
+    height: 100px;
+    padding: 1em;
+    border: none;
+    background-color: rgb(236, 234, 234);
+    border-radius: 1em;
+  }
+
+  textarea:focus {
+    outline: none;
+    background-color: rgb(242, 240, 240);
+  }
+}

@@ -4,8 +4,8 @@ import { Post } from '../../models/Post';
 import { BlogService } from '../../core/services/blog.service';
 import { Comment } from '../../models/Comment';
 import { CommentCardComponent } from '../comment-card/comment-card.component';
-import { CommentSectionComponent } from '../comment-section/comment-section.component';
 import { MatIconModule } from '@angular/material/icon';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-post-card',
@@ -13,7 +13,6 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [
     CommonModule,
     CommentCardComponent,
-    CommentSectionComponent,
     MatIconModule,
   ],
   templateUrl: './post-card.component.html',
@@ -24,8 +23,9 @@ export class PostCardComponent implements OnInit {
   comments: Comment[] = [];
   showComments: boolean = false;
   showTextField: boolean = false;
+  commentText: string = '';
 
-  constructor(private blogService: BlogService) {}
+  constructor(private blogService: BlogService, private toastr: ToastrService) {}
 
   ngOnInit(): void {}
 
@@ -53,6 +53,39 @@ export class PostCardComponent implements OnInit {
       if (!exists) {
         this.comments.push(comment);
       }
+    }
+  }
+
+  submitComment(): void {
+    const textField = document.getElementById(
+      'comment-text-area',
+    ) as HTMLTextAreaElement;
+    if (textField) {
+      this.commentText = textField.value;
+    }
+
+    if (this.commentText.trim()) {
+      const newComment: Comment = {
+        name: 'Anonymous',
+        email: 'anonymous@example.com',
+        postId: this.post.id,
+        body: this.commentText,
+        id: Math.floor(Math.random() * 1000),
+      };
+
+      this.blogService.createComment(newComment).subscribe({
+        next: (comment) => {
+          console.log('Comment created:', comment);
+          this.commentText = '';
+          this.addComment(comment, this.post);
+          this.toastr.success('Comment added successfully!', 'Success');
+        },
+        error: (err) => {
+          console.error('Error creating comment:', err);
+        },
+      });
+    } else {
+      console.error('Comment text cannot be empty');
     }
   }
 }
